@@ -1,31 +1,39 @@
-第四章虚拟机性能监控与故障处理工具
-命令
-jps：虚拟机进程状况工具
-命令格式：jps[options] [hostid]
-可以列出正在运行的虚拟机进程，并显示虚拟机的执行主类（main（），Main Class函数
-所在的类）名称以及这些进程的本地虚拟机唯一ID。
-jstal：虚拟机统计信息监视工具
-命令格式：jstat[option vmid [interval][s|ms][count]]
-用于监视虚拟机各种运行状态信息的命令行工具。它可以显示本地或者远程虚拟机进程中
-的类装载，内存，垃圾收集，JIT编译等运行数据。
-jinfo：java配置信息工具
-命令格式：jinfo [option] pid
-是用来实时查看和调用虚拟机各项参数。
-jmap：java内存映像工具
-命令格式：jmap [option] vmid
-命令用于生成java堆转储快照。
-jhat：虚拟机堆转储快照分析工具
-用来分析jmap生成的堆转储快照。
-jstack：java堆栈跟踪工具
-命令格式：jstack [option ] vmid
-用于生成虚拟机当前时刻的线程快照。线程快照就是当前虚拟机内每一条线程正在执行的
-方法堆栈的集合，生成线程快照的主要目的就是为了定位线程出现长时间停顿别的原因。
-HSDISLJIT生成代码反汇编
-是一个Sun官方推荐的HotSpot虚拟机JIT编译代码的反汇编插件，他包含在HotSpot虚拟
-机的源码中，但没有提供编译后的程序。
-JConsole：java监视与管理控制台
-是一种基于JMX的可视化监视，管理工具。
-VisualVm：多合一故障处理工具
-运行监视和故障处理程序。 
+使用ReentrantLock类：
+在多线程中，可以使用synchronized关键字来实现线程间的同步互斥，但在jdk1.5中增加了
+ReentrantLock类也能达到同样的效果，并且在拓展功能上更加强大，比如具有嗅探锁定，多路
+分支通知等功能，而且在使用上也比synchronized更加灵活。
+使用：Lock lock = new ReentrantLocak（）；
+lock.lock()锁定lock.unlock()释放。
+使用condition实现等待/通知：
+*关键字synchronized与wait和notify，notifyAll方法相结合可以实现等待/通知模式，类
+ReentrantLock也可以实现同样的功能，但要借助Condition对象。Condition类是Jdk5中出现的技
+术，使用它有更好的灵活性，比如可以实现多路通知功能。而他的优点就是可以选择性通知。
+使用：Condition condition = （某个锁）lock.newCondition();
+wait（）相当于Condition的await（）；
+wait（long timeout）相当于await(long time，TimeUnit unit)；
+notify相当于signal（）；
+notifyAll相当于signalAll（）；
+
+公平锁不公平锁：
+Lock分为公平锁和不公平锁，公平锁表示线程获取锁的顺序是按照县城加锁的顺序来分配的，即
+先进先出。而非公平锁是随机的。
+使用：Lock lock = newReentrantLock（true/false）；
+方法int getHoldCount（）：查询当前线程保持此锁定的个数，也就是调用2lock（）方法的次数。
+方法int getQueueLength（）：返回正在等待获取此锁定的线程估计数。
+方法int getWaitQueueLength（Condition condition）：返回等待与此锁定相关的给定条件Condition的线程计数。 就是用了condition的线程数。
+方法boolean hasQueuedThread（Thread thread）：查询指定的线程是否正在等待获取此锁定。
+方法boolean hasQueueThreads（）：查询是否有线程正在等待获取此锁定。
+方法boolean hasWaiters（Condition condition）：查询是否有线程正在等待与此锁定有关的condition条件。
+方法boolean isFair （）：判断是否为公平锁。
+方法boolean isHeldByCountThread（）：查询当前线程是否保持此锁定。
+方法boolean isLocked（）：查询此锁定是否由任意线程保持。
+方法void lockIntrrupttibly（）：如果当前线程未被中断，则获取锁定，如果已经中断则出现异常。
 
 
+使用ReentrantReadWriteLock类：
+读写锁，在没有写锁时，进行读取操作的多个线程都可以获取读锁，而上了写锁后，只有获取写
+锁的才能进行写入。
+用法：ReentrantReadWriteLock lock = new ReentrantReadWriteLock（）；
+上锁：lock.readLock().Lock();(读锁) ；lock.writeLock().Lock();(写锁)
+释放就是：unlock（）
+就是“读写”，“写读”，“写写”都是互斥的；而“读读”是异步，非互斥的。
