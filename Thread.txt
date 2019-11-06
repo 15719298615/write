@@ -11,3 +11,52 @@
          ExecutorService是Java提供的用于管理线程池的类。该类的两个作用：控制线程数量和重用线程
 2. 具体的4种常用的线程池实现如下：（返回值都是ExecutorService）
          2.1 Executors.newCacheThreadPool()：可缓存线程池，先查看池中有没有以前建立的线程，如果有，就直接使用。如果没有，就建一个新的线程加入池中，缓存型池子通常用于执行一些生存期很短的异步型任务
+3. 使用线程池的原因：
+        多线程运行时间，系统不断的启动和关闭新线程，成本非常高，会过渡消耗系统资源，以及过渡切换线程的危险，从而可能导致系统资源的崩溃。这时，线程池就是最好的选择了。
+二. 四种常见的线程池详解
+1. 线程池的返回值ExecutorService简介：
+         ExecutorService是Java提供的用于管理线程池的类。该类的两个作用：控制线程数量和重用线程
+2. 具体的4种常用的线程池实现如下：（返回值都是ExecutorService）
+         2.1 Executors.newCacheThreadPool()：可缓存线程池，先查看池中有没有以前建立的线程，如果有，就直接使用。如果没有，就建一个新的线程加入池中，缓存型池子通常用于执行一些生存期很短的异步型任务
+         示例代码：
+
+
+ 1 package com.study.test;
+ 2 
+ 3 import java.util.concurrent.ExecutorService;
+ 4 import java.util.concurrent.Executors;
+ 5 
+ 6 public class ThreadPoolExecutorTest {
+ 7     public static void main(String[] args) {
+ 8         //创建一个可缓存线程池
+ 9         ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
+10         for (int i = 0; i < 10; i++) {
+11             try {
+12                 //sleep可明显看到使用的是线程池里面以前的线程，没有创建新的线程
+13                 Thread.sleep(1000);
+14             } catch (InterruptedException e) {
+15                 e.printStackTrace();
+16             }
+17             cachedThreadPool.execute(new Runnable() {
+18                 public void run() {
+19                     //打印正在执行的缓存线程信息
+20                     System.out.println(Thread.currentThread().getName()+"正在被执行");
+21                 }
+22             });
+23         }
+24     }
+25 }
+
+输出结果：
+pool-1-thread-1正在被执行
+pool-1-thread-1正在被执行
+pool-1-thread-1正在被执行
+pool-1-thread-1正在被执行
+pool-1-thread-1正在被执行
+pool-1-thread-1正在被执行
+pool-1-thread-1正在被执行
+pool-1-thread-1正在被执行
+pool-1-thread-1正在被执行
+pool-1-thread-1正在被执行
+线程池为无限大，当执行当前任务时上一个任务已经完成，会复用执行上一个任务的线程，而不用每次新建线程
+       2.2  Executors.newFixedThreadPool(int n)：创建一个可重用固定个数的线程池，以共享的无界队列方式来运行这些线程。
