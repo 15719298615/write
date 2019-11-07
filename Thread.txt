@@ -192,3 +192,72 @@ pool-1-thread-1正在被执行,打印的值是:6
 pool-1-thread-1正在被执行,打印的值是:7
 pool-1-thread-1正在被执行,打印的值是:8
 pool-1-thread-1正在被执行,打印的值是:9
+三. 缓冲队列BlockingQueue和自定义线程池ThreadPoolExecutor
+1. 缓冲队列BlockingQueue简介：
+          BlockingQueue是双缓冲队列。BlockingQueue内部使用两条队列，允许两个线程同时向队列一个存储，一个取出操作。在保证并发安全的同时，提高了队列的存取效率。
+2. 常用的几种BlockingQueue：
+ArrayBlockingQueue（int i）:规定大小的BlockingQueue，其构造必须指定大小。其所含的对象是FIFO顺序排序的。
+LinkedBlockingQueue（）或者（int i）:大小不固定的BlockingQueue，若其构造时指定大小，生成的BlockingQueue有大小限制，不指定大小，其大小有Integer.MAX_VALUE来决定。其所含的对象是FIFO顺序排序的。
+PriorityBlockingQueue（）或者（int i）:类似于LinkedBlockingQueue，但是其所含对象的排序不是FIFO，而是依据对象的自然顺序或者构造函数的Comparator决定。
+SynchronizedQueue（）:特殊的BlockingQueue，对其的操作必须是放和取交替完成。
+3. 自定义线程池（ThreadPoolExecutor和BlockingQueue连用）：
+     自定义线程池，可以用ThreadPoolExecutor类创建，它有多个构造方法来创建线程池。
+    常见的构造函数：ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue)
+     示例代码：
+
+
+ 1 package com.study.test;
+ 2 
+ 3 import java.util.concurrent.ArrayBlockingQueue;
+ 4 import java.util.concurrent.BlockingQueue;
+ 5 import java.util.concurrent.ThreadPoolExecutor;
+ 6 import java.util.concurrent.TimeUnit;
+ 7 
+ 8 class TempThread implements Runnable {
+ 9 
+10     @Override
+11     public void run() {
+12         // 打印正在执行的缓存线程信息
+13         System.out.println(Thread.currentThread().getName() + "正在被执行");
+14         try {
+15             // sleep一秒保证3个任务在分别在3个线程上执行
+16             Thread.sleep(1000);
+17         } catch (InterruptedException e) {
+18             e.printStackTrace();
+19         }
+20     }
+21 
+22 }
+23 
+24 public class TestThreadPoolExecutor {
+25     public static void main(String[] args) {
+26         // 创建数组型缓冲等待队列
+27         BlockingQueue<Runnable> bq = new ArrayBlockingQueue<Runnable>(10);
+28         // ThreadPoolExecutor:创建自定义线程池，池中保存的线程数为3，允许最大的线程数为6
+29         ThreadPoolExecutor tpe = new ThreadPoolExecutor(3, 6, 50, TimeUnit.MILLISECONDS, bq);     //bq为任务队列
+30 
+31         // 创建3个任务
+32         Runnable t1 = new TempThread();
+33         Runnable t2 = new TempThread();
+34         Runnable t3 = new TempThread();
+35         // Runnable t4 = new TempThread();
+36         // Runnable t5 = new TempThread();
+37         // Runnable t6 = new TempThread();
+38 
+39         // 3个任务在分别在3个线程上执行
+40         tpe.execute(t1);
+41         tpe.execute(t2);
+42         tpe.execute(t3);
+43         // tpe.execute(t4);
+44         // tpe.execute(t5);
+45         // tpe.execute(t6);
+46 
+47         // 关闭自定义线程池
+48         tpe.shutdown();
+49     }
+50 }
+
+输出结果：
+pool-1-thread-1正在被执行
+pool-1-thread-2正在被执行
+pool-1-thread-3正在被执行
