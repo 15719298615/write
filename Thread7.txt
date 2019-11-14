@@ -5,4 +5,4 @@
 程。
 *线程组的作用是，可以偶两的管理线程或线程组对象，有效地对线程或线程组的想进行组织。
 simpleDateFormat非线程安全：
-simpleDateFormat在多线程中处理的日期的出的结论是错误的，可以使用ThreadLocal解决。  
+simpleDateFormat在多线程中处理的日期的出的结论是错误的，可以使用ThreadLocal解决。   
