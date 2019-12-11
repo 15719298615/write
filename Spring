@@ -1,0 +1,32 @@
+创建应用组件之间的行为称为装配。Spring又多种装配bean的方式，采用XML是很常见的一种装配方式。
+
+DI：依赖注入
+
+spring通过应用上下文（application Context）装载bean的定义并把他们组装起来。Spring应用上下文全权负责对象的创建和组装。Spring自带了多种应用上下文的实现，他们之间主要的区别在于如何加载配置。
+
+
+应用切面：
+DI能让相互协作的软件保持松散耦合，而面向切面编程允许你把遍布应用软件各处的功能分离出来形成可重用的组件。
+面向切面编程往往被定义为促使软件系统实现关注点的分离一项技术。系统由于许多不同的组件组成，每一个组件各自负责一块特定功能。除了实现自身核心的功能外，这些组件还经常承担额外的职责。诸如日志，事务管理器和安全这样的系统服务经常融入到自身具有核心业务逻辑的组件中去，这些系统服务通常被称为横切关注点，因为他们会跨越系统的多个组件。
+
+AOP切面：
+不论怎样把一个一个类定义为切点之前都首先要把它定义为一个Spring bean。
+
+Spring容器：
+Spring容器并不是只有一个。Spring自带了多个容器实现，可以归为两种不同的类型。
+1.Bean工厂是最简单的容器，提供基本的DI支持。
+2.应用上下文，基于BeanFactory构建，并提供应用框架级别的服务，例如从属性文件机解析文本信息以及发布应用事件给感兴趣的事件监听者。
+
+
+Bean的生命周期：
+1.实例化：Spring对bean进行实例化。
+2.填充属性：Spring将值和bean的引用注入到备案对应的属性中。
+3.调用BeanNameAware的setBeanFactory（）方法：如果bean实现了BeanNameAware接口，Spring将Bean的ID传递给setBeanName（）方法。
+4.调用BeanFactoryAware的setBeanFactory（）方法：如果Bean实现了BeanFactoryAware接口，Spring将调用setBeanFactory（）方法，将BeanFactory容器实例传入。
+5.调用ApplicationContextAware的setApplicationContext（）方法：如果bean实现了ApplicationContextAware接口，Spring将调用setApplicationContext（）方法，将bean所在的应用上下文的引用传入进来。
+6.调用BeanPostProcessor的预初始化方法：如果bean实现了BeanPostProcessor接口，Spring将调用他们的postProcessBeforeInitialization（）方法。
+7.调用InitializingBean的afterPropertiesSet（）方法：如果bean实现了InitializingBean接口，Spring将调用他们的afterPropertiesSet（）方法。类似的，如果bean使用init-method声明了初始化方法，该方法也会被调用。
+8.调用自定义的初始化方法：如果bean实现了BeanPostProcessor接口，spring将调用他们的postProcessAfterInitialization（）方法。
+9.调用BeanPostProcessor的初始化方法：此时，bean已经准备就绪了，可以被应用程序使用了，它们将一直驻留在应用的上下文，直到该应用上下文被销毁。
+10.调用DisposableBean的destory（）方法：如果bean实现了DisposableBean接口，Spring将调用他的destory（）接口方法。同样的，如果bean使用destory-method声明了销毁方法，该方法也会被调用。
+
