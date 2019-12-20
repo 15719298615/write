@@ -10,3 +10,19 @@ clone分为浅拷贝，一般拷贝和彻底深拷贝。
 归根到底，慎用Object的clone方法来拷贝对象，因为对象的clone方法一般默认为浅拷贝，若想实现深拷贝，则需要覆写clone（）方法实现引用对象的深度遍历式拷贝。
 
 
+在JDK9之后finalize（）方法直接被标记为过时方法。
+
+
+抽象类与接口的区别(前抽象类后接口)：
+定义关键字：abstract；interface
+子类继承或实现关键字：extends；implements
+方法实现：可以有；不能用，但在JDK8及以后允许有default实现
+方法访问控制符：无限制；有限制，默认是public abstract类型
+属性访问控制符：无限制；有限制，默认是public static final类型
+静态方法：可以有；不能有
+static{}静态代码块：可以有；不能有
+本类型之间拓展：单继承；多继承
+本类型之间扩展关键字：extends；extends
+
+
+
