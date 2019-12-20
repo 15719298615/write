@@ -1,0 +1,107 @@
+1.HashMap位置决定与存储
+　　　通过前面的源码分析可知，HashMap 采用一种所谓的“Hash 算法”来决定每个元素的存储位置。当程序执行put(String,Obect)方法 时，系统将调用String的 hashCode() 方法得到其 hashCode 值——每个 Java 对象都有 hashCode() 方法，都可通过该方法获得它的 hashCode 值。得到这个对象的 hashCode 值之后，系统会根据该 hashCode 值来决定该元素的存储位置。源码如下:
+    public V put(K key, V value) {
+        if (key == null)
+            return putForNullKey(value);
+        int hash = hash(key.hashCode());
+        int i = indexFor(hash, table.length);
+        for (Entry<K,V> e = table[i]; e != null; e = e.next) {
+            Object k;
+            if (e.hash == hash && ((k = e.key) == key || key.equals(k))) {
+                V oldValue = e.value;
+                e.value = value;
+                e.recordAccess(this);
+                return oldValue;
+            }
+        }
+ 
+        modCount++;
+        addEntry(hash, key, value, i);
+        return null;
+    }   
+ static int hash(int h) {
+        // This function ensures that hashCodes that differ only by
+        // constant multiples at each bit position have a bounded
+        // number of collisions (approximately 8 at default load factor).
+        h ^= (h >>> 20) ^ (h >>> 12);
+        return h ^ (h >>> 7) ^ (h >>> 4);
+    }
+ 
+    /**
+     * Returns index for hash code h.
+     */
+    static int indexFor(int h, int length) {
+        return h & (length-1);
+    }
+ 
+ static class Entry<K,V> implements Map.Entry<K,V> {
+        final K key;
+        V value;
+        Entry<K,V> next;
+        final int hash;
+ 
+        /**
+         * Creates new entry.
+         */
+        Entry(int h, K k, V v, Entry<K,V> n) {
+            value = v;
+            next = n;
+            key = k;
+            hash = h;
+        }
+ 
+        public final K getKey() {
+            return key;
+        }
+ 
+        public final V getValue() {
+            return value;
+        }
+ 
+        public final V setValue(V newValue) {
+	    V oldValue = value;
+            value = newValue;
+            return oldValue;
+        }
+ 
+        public final boolean equals(Object o) {
+            if (!(o instanceof Map.Entry))
+                return false;
+            Map.Entry e = (Map.Entry)o;
+            Object k1 = getKey();
+            Object k2 = e.getKey();
+            if (k1 == k2 || (k1 != null && k1.equals(k2))) {
+                Object v1 = getValue();
+                Object v2 = e.getValue();
+                if (v1 == v2 || (v1 != null && v1.equals(v2)))
+                    return true;
+            }
+            return false;
+        }
+ 
+        public final int hashCode() {
+            return (key==null   ? 0 : key.hashCode()) ^
+                   (value==null ? 0 : value.hashCode());
+        }
+ 
+        public final String toString() {
+            return getKey() + "=" + getValue();
+        }
+ 
+        /**
+         * This method is invoked whenever the value in an entry is
+         * overwritten by an invocation of put(k,v) for a key k that‘s already
+         * in the HashMap.
+         */
+        void recordAccess(HashMap<K,V> m) {
+        }
+ 
+        /**
+         * This method is invoked whenever the entry is
+         * removed from the table.
+         */
+        void recordRemoval(HashMap<K,V> m) {
+        }
+    }
+　　  我们知道Entry含有的属性是Value，Key，还有一只指向下一个指针Next。当系统决定存储 HashMap 中的 key-value 对时，完全没有考虑 Entry 中的 value，仅仅只是根据 key 来计算并决定每个 Entry 的存储位置。这也说明了前面的结论：我们完全可以把 Map 集合中的 value 当成 key 的附属，当系统决定了 key 的存储位置之后，value 随之保存在那里即可
+   
