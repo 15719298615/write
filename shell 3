@@ -27,3 +27,10 @@ chmod命令
 
 给所有用户增加可执行权限，a表示all，x为目录的执行权限
 chmod a+x filename
+
+head与tail命令
+head file（默认大一文件前十行）
+head -n 4 file（打印前四行）
+tail file（默认打印后10行）
+tail -n 5 file（打印后五行）
+tail -f filename（监视文件，并随着数据的增加持续保持更新）
