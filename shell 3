@@ -34,3 +34,7 @@ head -n 4 file（打印前四行）
 tail file（默认打印后10行）
 tail -n 5 file（打印后五行）
 tail -f filename（监视文件，并随着数据的增加持续保持更新）
+
+mkdir及touch命令
+mkdir filename（创建文件夹）
+touch filename（创建文件）
