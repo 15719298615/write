@@ -22,3 +22,8 @@ linux/unix文件系统中每个文件都有三种时间戳
 变化时间（-ctime）：文件元数据（例如权限或所有权）最后一次改变的时间。
 
 find . -type f -atime -print  打印出7天前访问过的数据文件。
+
+chmod命令
+
+给所有用户增加可执行权限，a表示all，x为目录的执行权限
+chmod a+x filename
