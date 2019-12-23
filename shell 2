@@ -1,0 +1,5 @@
+wget命令
+wget url（下载网址或者远程文件。）
+wget -t 5 URL（下载5次，-t表示下载次数）
+wget -t 0 URL（不停地进行重复下载）
+                                                                 
