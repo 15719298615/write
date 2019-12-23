@@ -1,0 +1,15 @@
+var=value
+var是变量名，value是赋给变量的值。
+var = value不同于var=value，前者是相等操作，后者是赋值操作。
+
+echo $PATH
+获得环境变量
+
+export可以用来配置环境变量。
+如果需要在PATH中添加一条新路径可以使用：
+export PATH="$PATH:/home/user/bin"
+
+这个是获取长度的
+var=123456
+echo ${#var}
+输出6
