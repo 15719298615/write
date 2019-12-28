@@ -21,3 +21,5 @@ shell是linux shell 脚本攻略的学习笔记
 operating system 为操作系统学习笔记
 
 git为git学习笔记
+
+redis为redis学习笔记
