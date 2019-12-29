@@ -4,3 +4,7 @@ git branch -r 查看所有的分支
 git checkout -b testing origin/testing 建立一个本地的分支，
 git checkout master 切换回master分支
 git merge 分支     （需要合并时，下切换到master分支，再打这句话，后面是需要合并的分支）
+
+
+git fetch origin把本地的分支更新到和远程服务器上一样的状态。
+git commit --amend对上一次的commit进行补充
