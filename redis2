@@ -38,3 +38,22 @@ OK
 遗憾的是字符串没有提供字串插入方法和子串删除方法。
 
 计数器 如果字符串的内容是一个整数，那么还可以将字符串当成计数器来使用。
+
+> set ireader 42
+OK
+> get ireader
+"42"
+> incrby ireader 100
+(integer) 142
+> get ireader
+"142"
+> decrby ireader 100
+(integer) 42
+> get ireader
+"42"
+> incr ireader  # 等价于incrby ireader 1
+(integer) 43
+> decr ireader  # 等价于decrby ireader 1
+(integer) 42
+计数器是有范围的，它不能超过Long.Max，不能低于Long.MIN
+
