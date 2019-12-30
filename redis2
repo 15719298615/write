@@ -30,3 +30,11 @@ OK
 > get ireader
 "beijing.zhangyue.keji.gufen.wooxian.gongsi"
 追加子串
+
+> append ireader .hao
+(integer) 46 # 返回长度
+> get ireader
+"beijing.zhangyue.keji.gufen.wooxian.gongsi.hao"
+遗憾的是字符串没有提供字串插入方法和子串删除方法。
+
+计数器 如果字符串的内容是一个整数，那么还可以将字符串当成计数器来使用。
