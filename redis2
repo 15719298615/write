@@ -16,3 +16,17 @@ OK
 > get ireader
 "beijing.zhangyue.keji.gufen.youxian.gongsi"
 获取字符串的长度 提供「变量名称」
+
+> strlen ireader
+(integer) 42
+获取子串 提供「变量名称」以及开始和结束位置[start, end]
+
+> getrange ireader 28 34
+"youxian"
+覆盖子串 提供「变量名称」以及开始位置和目标子串
+
+> setrange ireader 28 wooxian
+(integer) 42  # 返回长度
+> get ireader
+"beijing.zhangyue.keji.gufen.wooxian.gongsi"
+追加子串
