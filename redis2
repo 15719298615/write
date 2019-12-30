@@ -57,3 +57,13 @@ OK
 (integer) 42
 计数器是有范围的，它不能超过Long.Max，不能低于Long.MIN
 
+> set ireader 9223372036854775807
+OK
+> incr ireader
+(error) ERR increment or decrement would overflow
+> set ireader -9223372036854775808
+OK
+> decr ireader
+(error) ERR increment or decrement would overflow
+过期和删除 字符串可以使用del指令进行主动删除，可以使用expire指令设置过期时间，到点会自动删除，这属于被动删除。可以使用ttl指令获取字符串的寿命。
+
