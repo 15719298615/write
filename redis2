@@ -67,3 +67,11 @@ OK
 (error) ERR increment or decrement would overflow
 过期和删除 字符串可以使用del指令进行主动删除，可以使用expire指令设置过期时间，到点会自动删除，这属于被动删除。可以使用ttl指令获取字符串的寿命。
 
+> expire ireader 60
+(integer) 1  # 1表示设置成功，0表示变量ireader不存在
+> ttl ireader
+(integer) 50  # 还有50秒的寿命，返回-2表示变量不存在，-1表示没有设置过期时间
+> del ireader
+(integer) 1  # 删除成功返回1
+> get ireader
+(nil)  # 变量ireader没有了
