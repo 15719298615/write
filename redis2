@@ -116,3 +116,13 @@ Redis将列表数据结构命名为list而不是array，是因为列表的存储
 > lpop ireader
 "python"
 ...
+
+在日常应用中，列表常用来作为异步队列来使用。
+
+长度 使用llen指令获取链表长度
+
+> rpush ireader go java python
+(integer) 3
+> llen ireader
+(integer) 3
+随机读 可以使用lindex指令访问指定位置的元素，使用lrange指令来获取链表子元素列表，提供start和end下标参数
