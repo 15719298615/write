@@ -140,3 +140,14 @@ Redis将列表数据结构命名为list而不是array，是因为列表的存储
 2) "java"
 3) "python"
 使用lrange获取全部元素时，需要提供end_index，如果没有负下标，就需要首先通过llen指令获取长度，才可以得出end_index的值，有了负下标，使用-1代替end_index就可以达到相同的效果。
+
+修改元素 使用lset指令在指定位置修改元素。
+
+> rpush ireader go java python
+(integer) 3
+> lset ireader 1 javascript
+OK
+> lrange ireader 0 -1
+1) "go"
+2) "javascript"
+3) "python"
