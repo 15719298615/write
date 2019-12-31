@@ -126,3 +126,17 @@ Redis将列表数据结构命名为list而不是array，是因为列表的存储
 > llen ireader
 (integer) 3
 随机读 可以使用lindex指令访问指定位置的元素，使用lrange指令来获取链表子元素列表，提供start和end下标参数
+
+> rpush ireader go java python
+(integer) 3
+> lindex ireader 1
+"java"
+> lrange ireader 0 2
+1) "go"
+2) "java"
+3) "python"
+> lrange ireader 0 -1  # -1表示倒数第一
+1) "go"
+2) "java"
+3) "python"
+使用lrange获取全部元素时，需要提供end_index，如果没有负下标，就需要首先通过llen指令获取长度，才可以得出end_index的值，有了负下标，使用-1代替end_index就可以达到相同的效果。
