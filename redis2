@@ -83,3 +83,22 @@ Redis将列表数据结构命名为list而不是array，是因为列表的存储
 
 
 队列／堆栈 链表可以从表头和表尾追加和移除元素，结合使用rpush/rpop/lpush/lpop四条指令，可以将链表作为队列或堆栈使用，左向右向进行都可以
+
+
+# 右进左出
+> rpush ireader go
+(integer) 1
+> rpush ireader java python
+(integer) 3
+> lpop ireader
+"go"
+> lpop ireader
+"java"
+> lpop ireader
+"python"
+# 左进右出
+> lpush ireader go java python
+(integer) 3
+> rpop ireader
+"go"
+...
