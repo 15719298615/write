@@ -102,3 +102,17 @@ Redis将列表数据结构命名为list而不是array，是因为列表的存储
 > rpop ireader
 "go"
 ...
+
+
+# 右进右出
+> rpush ireader go java python
+(integer) 3
+> rpop ireader 
+"python"
+...
+# 左进左出
+> lpush ireader go java python
+(integer) 3
+> lpop ireader
+"python"
+...
