@@ -152,3 +152,13 @@ OK
 2) "javascript"
 3) "python"
 插入元素 使用linsert指令在列表的中间位置插入元素，有经验的程序员都知道在插入元素时，我们经常搞不清楚是在指定位置的前面插入还是后面插入，所以antirez在linsert指令里增加了方向参数before/after来显示指示前置和后置插入。不过让人意想不到的是linsert指令并不是通过指定位置来插入，而是通过指定具体的值。这是因为在分布式环境下，列表的元素总是频繁变动的，意味着上一时刻计算的元素下标在下一时刻可能就不是你所期望的下标了。
+> rpush ireader go java python
+(integer) 3
+> linsert ireader before java ruby
+(integer) 4
+> lrange ireader 0 -1
+1) "go"
+2) "ruby"
+3) "java"
+4) "python"
+到目前位置，我还没有在实际应用中发现插入指定的应用场景。
