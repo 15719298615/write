@@ -172,3 +172,13 @@ OK
 1) "go"
 2) "python"
 定长列表 在实际应用场景中，我们有时候会遇到「定长列表」的需求。比如要以走马灯的形式实时显示中奖用户名列表，因为中奖用户实在太多，能显示的数量一般不超过100条，那么这里就会使用到定长列表。维持定长列表的指令是ltrim，需要提供两个参数start和end，表示需要保留列表的下标范围，范围之外的所有元素都将被移除。
+
+> rpush ireader go java python javascript ruby erlang rust cpp
+(integer) 8
+> ltrim ireader -3 -1
+OK
+> lrange ireader 0 -1
+1) "erlang"
+2) "rust"
+3) "cpp"
+如果指定参数的end对应的真实下标小于start，其效果等价于del指令，因为这样的参数表示需要需要保留列表元素的下标范围为空。
