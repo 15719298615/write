@@ -198,3 +198,4 @@ hash
 (integer) 1
 > hmset ireader java fast python slow
 OK
+获取元素 可以通过hget定位具体key对应的value，可以通过hmget获取多个key对应的value，可以使用hgetall获取所有的键值对，可以使用hkeys和hvals分别获取所有的key列表和value列表。这些操作和Java语言的Map接口是类似的。
