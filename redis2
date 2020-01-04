@@ -213,3 +213,12 @@ OK
 4) "fast"
 5) "python"
 6) "slow"
+> hkeys ireader
+1) "go"
+2) "java"
+3) "python"
+> hvals ireader
+1) "fast"
+2) "fast"
+3) "slow"
+删除元素 可以使用hdel删除指定key，hdel支持同时删除多个key
