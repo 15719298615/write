@@ -237,3 +237,20 @@ OK
 > hexists ireader go
 (integer) 1
 计数器 hash结构还可以当成计数器来使用，对于内部的每一个key都可以作为独立的计数器。如果value值不是整数，调用hincrby指令会出错。
+> hincrby ireader go 1
+(integer) 1
+> hincrby ireader python 4
+(integer) 4
+> hincrby ireader java 4
+(integer) 4
+> hgetall ireader
+1) "go"
+2) "1"
+3) "python"
+4) "4"
+5) "java"
+6) "4"
+> hset ireader rust good
+(integer) 1
+> hincrby ireader rust 1
+(error) ERR hash value is not an integer
