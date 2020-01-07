@@ -231,3 +231,9 @@ OK
 > hdel ireader java python
 (integer) 2
 判断元素是否存在 通常我们使用hget获得key对应的value是否为空就直到对应的元素是否存在了，不过如果value的字符串长度特别大，通过这种方式来判断元素存在与否就略显浪费，这时可以使用hexists指令。
+
+> hmset ireader go fast java fast python slow
+OK
+> hexists ireader go
+(integer) 1
+计数器 hash结构还可以当成计数器来使用，对于内部的每一个key都可以作为独立的计数器。如果value值不是整数，调用hincrby指令会出错。
