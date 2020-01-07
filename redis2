@@ -222,3 +222,12 @@ OK
 2) "fast"
 3) "slow"
 删除元素 可以使用hdel删除指定key，hdel支持同时删除多个key
+
+
+> hmset ireader go fast java fast python slow
+OK
+> hdel ireader go
+(integer) 1
+> hdel ireader java python
+(integer) 2
+判断元素是否存在 通常我们使用hget获得key对应的value是否为空就直到对应的元素是否存在了，不过如果value的字符串长度特别大，通过这种方式来判断元素存在与否就略显浪费，这时可以使用hexists指令。
