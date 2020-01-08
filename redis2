@@ -277,3 +277,11 @@ Java程序员都知道HashSet的内部实现使用的是HashMap，只不过所�
 > srandmember ireader
 "java"
 删除元素 使用srem删除一到多个元素，使用spop删除随机一个元素
+
+> sadd ireader go java python rust erlang
+(integer) 5
+> srem ireader go java
+(integer) 2
+> spop ireader
+"erlang"
+判断元素是否存在 使用sismember指令，只能接收单个元素
