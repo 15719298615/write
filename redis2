@@ -261,3 +261,8 @@ OK
 
 set
 Java程序员都知道HashSet的内部实现使用的是HashMap，只不过所有的value都指向同一个对象。Redis的set结构也是一样，它的内部也使用hash结构，所有的value都指向同一个内部值。
+增加元素 可以一次增加多个元素
+
+> sadd ireader go java python
+(integer) 3
+读取元素 使用smembers列出所有元素，使用scard获取集合长度，使用srandmember获取随机count个元素，如果不提供count参数，默认为1
