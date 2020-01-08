@@ -266,3 +266,14 @@ Java程序员都知道HashSet的内部实现使用的是HashMap，只不过所�
 > sadd ireader go java python
 (integer) 3
 读取元素 使用smembers列出所有元素，使用scard获取集合长度，使用srandmember获取随机count个元素，如果不提供count参数，默认为1
+> sadd ireader go java python
+(integer) 3
+> smembers ireader
+1) "java"
+2) "python"
+3) "go"
+> scard ireader
+(integer) 3
+> srandmember ireader
+"java"
+删除元素 使用srem删除一到多个元素，使用spop删除随机一个元素
