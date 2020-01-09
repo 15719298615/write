@@ -295,4 +295,4 @@ Java程序员都知道HashSet的内部实现使用的是HashMap，只不过所�
    
 
 sortedset
-
+SortedSet(zset)是Redis提供的一个非常特别的数据结构，一方面它等价于Java的数据结构Map<String, Double>，可以给每一个元素value赋予一个权重score，另一方面它又类似于TreeSet，内部的元素会按照权重score进行排序，可以得到每个元素的名次，还可以通过score的范围来获取元素的列表。
