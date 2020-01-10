@@ -310,3 +310,9 @@ zset底层实现使用了两个数据结构，第一个是hash，第二个是跳
 > zrem ireader go python
 (integer) 2
 计数器 同hash结构一样，zset也可以作为计数器使用。
+
+> zadd ireader 4.0 python 4.0 java 1.0 go
+(integer) 3
+> zincrby ireader 1.0 python
+"5"
+获取排名和分数 通过zscore指令获取指定元素的权重，通过zrank指令获取指定元素的正向排名，通过zrevrank指令获取指定元素的反向排名[倒数第一名]。正向是由小到大，负向是由大到小。
