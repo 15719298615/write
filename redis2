@@ -307,3 +307,6 @@ zset底层实现使用了两个数据结构，第一个是hash，第二个是跳
 > zcard ireader
 (integer) 3
 删除元素 通过指令zrem可以删除zset中的元素，可以一次删除多个
+> zrem ireader go python
+(integer) 2
+计数器 同hash结构一样，zset也可以作为计数器使用。
