@@ -339,3 +339,11 @@ zset底层实现使用了两个数据结构，第一个是hash，第二个是跳
 4) "4"
 5) "python"
 6) "5"
+
+> zrevrange ireader 0 -1 withscores
+1) "python"
+2) "5"
+3) "java"
+4) "4"
+5) "go"
+6) "1"
