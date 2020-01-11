@@ -331,3 +331,11 @@ zset底层实现使用了两个数据结构，第一个是hash，第二个是跳
 1) "go"
 2) "java"
 3) "python"
+
+> zrange ireader 0 -1 withscores
+1) "go"
+2) "1"
+3) "java"
+4) "4"
+5) "python"
+6) "5"
