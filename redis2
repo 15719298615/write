@@ -327,3 +327,7 @@ zset底层实现使用了两个数据结构，第一个是hash，第二个是跳
 > zrevrank ireader python
 (integer) 0
 根据排名范围获取元素列表 通过zrange指令指定排名范围参数获取对应的元素列表，携带withscores参数可以一并获取元素的权重。通过zrevrange指令按负向排名获取元素列表[倒数]。正向是由小到大，负向是由大到小。
+> zrange ireader 0 -1  # 获取所有元素
+1) "go"
+2) "java"
+3) "python"
