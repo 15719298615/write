@@ -379,3 +379,6 @@ zset底层实现使用了两个数据结构，第一个是hash，第二个是跳
 > zremrangebyscore ireader -inf 4
 (integer) 2
 > zrange ireader 0 -1
+
+1) "python"
+跳跃列表 zset内部的排序功能是通过「跳跃列表」数据结构来实现的，它的结构非常特殊，也比较复杂。这一块的内容深度读者要有心理准备。
