@@ -372,3 +372,10 @@ zset底层实现使用了两个数据结构，第一个是hash，第二个是跳
 6) "1"
 
 根据范围移除元素列表 可以通过排名范围，也可以通过score范围来一次性移除多个元素
+> zremrangebyrank ireader 0 1
+(integer) 2  # 删掉了2个元素
+> zadd ireader 4.0 java 1.0 go
+(integer) 2
+> zremrangebyscore ireader -inf 4
+(integer) 2
+> zrange ireader 0 -1
