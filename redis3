@@ -73,3 +73,5 @@ EXEC
 执行所有事务块内的命令。
 MULTI 
 标记一个事务块的开始。
+UNWATCH 
+取消 WATCH 命令对所有 key 的监视
