@@ -25,4 +25,5 @@ static{}静态代码块：可以有；不能有
 本类型之间扩展关键字：extends；extends
 
 
-
+字符串：
+字符串相关的有三种，为String，StringBuilder，StringBuffer。String是只读字符串，对他的任何改动都是创建一个新对象，再把引用指向该对象。String对象赋值操作后，会在常量池中进行缓存，如果下次申请创建对象时，缓存中对象已经存在，则直接返回相应引用给创建者。而StringBuffer则可以在原对象上进行修改，是线程安全的。JDK5引入的StringBuffer和StringBuilder均继承自AbstractStringBuilder，而StringBuilder是非线程安全的。
