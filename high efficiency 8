@@ -1,1 +1,3 @@
 jvm
+classloader的使命就是提前加载.class类文件到内存中。
+java的类加载器是一个运行时核心基础设施模块，主要是在启动之处进行类的Load，Link，Init，即加载连接初始化。
