@@ -46,3 +46,11 @@ public void lock() {
         }
     }
 }
+
+解锁代码
+public void unlock() {
+    String lockValue = jedis.get(lockKey);
+    if (lockValue.equals(lockValue)){
+        jedis.del(lockKey);
+    }
+}
