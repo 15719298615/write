@@ -54,3 +54,9 @@ public void unlock() {
         jedis.del(lockKey);
     }
 }
+
+别的方式：
+细颗粒度锁：
+带有超时限制特性的锁：
+
+
