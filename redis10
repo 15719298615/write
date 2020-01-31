@@ -17,3 +17,21 @@
 方式二：
 使用redis构建锁：
 使用setnx来实现锁的获取功能，这个命令只会在键不存在的情况下为键设置值，而锁要做的就是讲一个随机生成的128位uuid设置为键的值，并使用这个值来防止锁被其他进程获得。
+
+public abstract class RedisLock implements Lock {
+
+    //...
+    protected String lockValue;
+
+    public RedisLock(Jedis jedis,String lockKey) {
+        this(jedis, lockKey, UUID.randomUUID().toString()+Thread.currentThread().getId());
+    }
+
+    public RedisLock(Jedis jedis, String lockKey, String lockValue) {
+        this.jedis = jedis;
+        this.lockKey = lockKey;
+        this.lockValue = lockValue;
+    }
+
+    //...
+}
