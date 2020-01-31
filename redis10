@@ -36,7 +36,7 @@ public abstract class RedisLock implements Lock {
     //...
 }
 
-加锁代码
+加锁代码 
 public void lock() {
     while(true){
         String result = jedis.set(lockKey, lockValue, NOT_EXIST,SECONDS,30);
