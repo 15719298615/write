@@ -3,4 +3,5 @@
 具体过程  
   * 新建一个空文件
   * 初始化 git init
-
+  * 自己要与origin master建立连接（下划线远程仓库链接） git remote add origin http://192.168.9.10:8888/root/game-of-life.git
+  
