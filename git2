@@ -6,4 +6,6 @@
   * 自己要与origin master建立连接（下划线远程仓库链接） git remote add origin http://192.168.9.10:8888/root/game-of-life.git
   * 把远程分支拉到本地（game-of-live-first_branch为远程仓库的分支名） git fetch origin game-of-live-first_branch
   * 在本地创建分支game-of-live-first_branch并切换到该分支 git checkout -b game-of-live-first_branch origin/game-of-live-first_branch
+  * 把game-of-live-first_branch远程分支上的内容都拉取到本地 git pull origin game-of-live-first_branch
 
+ 
