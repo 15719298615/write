@@ -20,3 +20,11 @@ print a
 b = (a==2)
 print b
 print (a[b])
+
+#进行类型转换
+print '进行类型转换'
+c = numpy.array([1,2,3,4])
+print c.dtype
+c = c.astype(str)
+print c.dtype
+print c
