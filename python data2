@@ -1,1 +1,7 @@
 # -*- coding: utf-8 -*-
+import numpy
+#genfromtxt读取一个文件，delimiter以什么符号分割
+print 'genfromtxt读取一个文件，delimiter以什么符号分割'
+studet = numpy.genfromtxt("student_info.txt",delimiter=";",dtype=str)
+print type(studet)
+print studet
