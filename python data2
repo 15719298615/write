@@ -5,3 +5,11 @@ print 'genfromtxt读取一个文件，delimiter以什么符号分割'
 studet = numpy.genfromtxt("student_info.txt",delimiter=";",dtype=str)
 print type(studet)
 print studet
+
+
+#array创建一个矩阵，shape是输出几行几列,并且numpy.array里的结构必须相同
+print 'array创建一个矩阵，shape是输出几行几列,并且numpy.array里的结构必须相同'
+a = numpy.array([[1,2,3,4,5],[2,3,4,5,6]])
+print a
+print a[:,1]
+print (a.shape)
