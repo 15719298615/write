@@ -52,3 +52,15 @@ print numpy.zeros((3,4))
 print numpy.ones((2,3,4))
 #随机产生一个矩阵
 print numpy.random.random((2,3))
+
+#进行运算
+print '进行运算'
+f = numpy.array([[20,30,40],[2,3,4]])
+g = numpy.arange(6).reshape(2,3)
+print 'f'
+print f
+print g
+#矩阵之间进行相减
+print f-g
+print g*2#乘二
+print g**2#平方
