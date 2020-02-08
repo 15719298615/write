@@ -64,3 +64,8 @@ print g
 print f-g
 print g*2#乘二
 print g**2#平方
+
+c1 = numpy.array([[1,2],[2,3]])
+c2 = numpy.array([[2,3],[3,4]])
+print (c1.dot(c2))#矩阵相乘（行乘列）
+print (numpy.dot(c1,c2))
