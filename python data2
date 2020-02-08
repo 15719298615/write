@@ -69,3 +69,12 @@ c1 = numpy.array([[1,2],[2,3]])
 c2 = numpy.array([[2,3],[3,4]])
 print (c1.dot(c2))#矩阵相乘（行乘列）
 print (numpy.dot(c1,c2))
+
+c3 = numpy.floor(10*numpy.random.random((3,4)))#floor为向下取整
+print c3
+print c3.ravel()#拉平，[6. 7. 5. 4. 2. 3.]
+print '------------'
+c3.shape = (6,2)#将他变成6行2列的
+print (c3)
+print (c3.T)#求转置（就是行和列变换）
+print '------------'
