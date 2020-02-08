@@ -35,7 +35,7 @@ d = numpy.array([[1,2,3],[2,3,4]])
 print d.sum(axis=1)
 #当axis为0时按列想加，结果为[3 5 7]
 print d.sum(axis=0)
-#制造一个从0到15的矩阵
+#制造一个从0到15的矩阵 
 
 
 print '制造一个从0到15的矩阵'
