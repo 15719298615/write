@@ -28,4 +28,5 @@ python data 为python数据分析学习笔记
 
 large website 为大型网站技术架构学习笔记
 
+appium为自动化测试框架的学习笔记
 
