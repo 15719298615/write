@@ -1,3 +1,4 @@
 adb：Android Debug Bridge，是一个调试工具
 
 adb的构成和工作原理：
+  adb包含三个部分：
