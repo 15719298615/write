@@ -10,3 +10,4 @@ adb常用命令：
   包名（package）：决定程序的唯一性（不是应用的名字）
   界面名（activity）：一个界面明对应着一个界面。
    获取包名和界面名：
+      adb shell dumpsys window windows | grep mFocusedApp
