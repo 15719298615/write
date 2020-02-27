@@ -11,3 +11,6 @@ adb常用命令：
   界面名（activity）：一个界面明对应着一个界面。
    获取包名和界面名：
       adb shell dumpsys window windows | grep mFocusedApp
+      结果实例： mFocusedApp=AppWindowToken{6554807 token=Token{44a7e46 								ActivityRecord{45bba21 u0 com.android.gallery3d/com.huawei.gallery.app.WelcomePage t368}}}
+包名：com.android.gallery3d
+界面名：com.huawei.gallery.app.WelcomePage
