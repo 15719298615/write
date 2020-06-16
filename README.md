@@ -32,5 +32,5 @@ appium为自动化测试框架的学习笔记
 
 netJC 为网络集成笔记
 
-advertisement 为广告学笔记
+advertising 为广告学笔记
 
