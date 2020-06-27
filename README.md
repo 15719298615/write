@@ -34,3 +34,4 @@ netJC 为网络集成笔记
 
 advertising 为计算广告笔记
 
+gogogo 为go的学习笔记
